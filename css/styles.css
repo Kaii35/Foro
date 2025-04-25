@@ -5,6 +5,7 @@
     --text-color: #FFFFFF;
     --secondary-text: #8899A6;
     --border-color: #38444D;
+    --navbar-height: 60px;
 }
 
 /* Reset básico */
@@ -19,6 +20,7 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
+    padding-top: var(--navbar-height); /* Añadir padding-top para compensar el navbar fijo */
 }
 
 /* Layout principal */
@@ -36,13 +38,14 @@ body {
     top: 0;
     width: 100%;
     z-index: 1000;
+    height: var(--navbar-height);
 }
 
 .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    height: 100%;
 }
 
 /* Botones */
@@ -63,7 +66,7 @@ body {
 
 /* Feed de posts */
 .feed {
-    margin-top: 80px;
+    margin-top: 20px; /* Reducir el margen superior */
 }
 
 .post {
@@ -99,6 +102,7 @@ body {
 /* Formulario de nuevo post */
 .new-post-form {
     margin-bottom: 30px;
+    margin-top: 20px; /* Añadir margen superior */
 }
 
 .post-input {
@@ -117,7 +121,7 @@ body {
 .sidebar {
     position: fixed;
     right: 20px;
-    top: 80px;
+    top: calc(var(--navbar-height) + 20px); /* Ajustar la posición superior */
     width: 300px;
 }
 
