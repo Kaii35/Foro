@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro Social - Feed</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">
+                <h1>ForoSocial</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="btn">Inicio</a>
+                <button class="btn">Nuevo Post</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="feed-container">
+            <form class="new-post-form">
+                <textarea 
+                    class="post-input" 
+                    placeholder="¿Qué quieres compartir hoy? Reseñas, reflexiones, frases..."
+                    maxlength="280"
+                ></textarea>
+                <button type="submit" class="btn">Publicar</button>
+            </form>
+
+            <div class="feed">
+                <!-- Los posts se generarán dinámicamente con JavaScript -->
+            </div>
+        </div>
+
+        <aside class="sidebar">
+            <div class="trending">
+                <h2>Tendencias</h2>
+                <ul class="trending-list">
+                    <li>#Libros</li>
+                    <li>#Películas</li>
+                    <li>#Videojuegos</li>
+                    <li>#Reflexiones</li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
