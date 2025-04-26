@@ -3,51 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foro Social - Feed</title>
+    <title>Feed - Bonfire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Aplicar la fuente a todo el texto */
+        body {
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        /* Ajustar tamaños de fuente para mejor legibilidad */
+        p, a, button, .btn {
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+
+        /* Efecto de texto de fogata */
+        .fire-text {
+            background: linear-gradient(to right, #ffd700, #ff8c00, #ff4500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fire 2s infinite;
+            text-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+        }
+
+        @keyframes fire {
+            0% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(20deg); }
+            100% { filter: hue-rotate(0deg); }
+        }
+
+        .feed-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .post-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .post-input {
+            width: 100%;
+            min-height: 100px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.7rem;
+            resize: vertical;
+        }
+
+        .post-button {
+            background-color: #6b7280;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.7rem;
+            transition: all 0.3s ease;
+        }
+
+        .post-button:hover {
+            background-color: #4b5563;
+            transform: translateY(-2px);
+        }
+
+        .posts {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .post {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .post-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .post-user {
+            font-weight: bold;
+            font-size: 0.8rem;
+            color: #2969a4;
+        }
+
+        .post-content {
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 20px;
+        }
+
+        .post-action {
+            color: var(--secondary-text);
+            text-decoration: none;
+            font-size: 0.7rem;
+        }
+
+        .post-action:hover {
+            color: var(--primary-color);
+        }
+
+        .logo h1 {
+            font-size: 1rem;
+        }
+
+        .btn {
+            background-color: #6b7280;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #4b5563;
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
 <body>
     <header class="header">
         <nav class="nav container">
             <div class="logo">
-                <h1>ForoSocial</h1>
+                <h1 class="fire-text">Bonfire</h1>
             </div>
             <div class="nav-links">
                 <a href="index.html" class="btn">Inicio</a>
-                <button class="btn">Nuevo Post</button>
+                <a href="profile.html" class="btn">Perfil</a>
             </div>
         </nav>
     </header>
 
-    <main class="container">
-        <div class="feed-container">
-            <form class="new-post-form">
-                <textarea 
-                    class="post-input" 
-                    placeholder="¿Qué quieres compartir hoy? Reseñas, reflexiones, frases..."
-                    maxlength="280"
-                ></textarea>
-                <button type="submit" class="btn">Publicar</button>
-            </form>
-
-            <div class="feed">
-                <!-- Los posts se generarán dinámicamente con JavaScript -->
-            </div>
+    <main class="feed-container">
+        <div class="post-form">
+            <textarea class="post-input" placeholder="¿Qué estás pensando?"></textarea>
+            <button class="post-button">Publicar</button>
         </div>
 
-        <aside class="sidebar">
-            <div class="trending">
-                <h2>Tendencias</h2>
-                <ul class="trending-list">
-                    <li>#Libros</li>
-                    <li>#Películas</li>
-                    <li>#Videojuegos</li>
-                    <li>#Reflexiones</li>
-                </ul>
+        <div class="posts">
+            <!-- Ejemplo de post -->
+            <div class="post">
+                <div class="post-header">
+                    <img src="https://i.pinimg.com/736x/81/59/ed/8159ed4094bd7baf96b1ef9d2962d7d9.jpg" alt="Avatar" class="post-avatar">
+                    <span class="post-user">Luftwaffe</span>
+                </div>
+                <p class="post-content">¡Este es un ejemplo de publicación en Bonfire! Comparte tus pensamientos y opiniones con la comunidad.</p>
+                <div class="post-actions">
+                    <a href="#" class="post-action">Me gusta</a>
+                    <a href="#" class="post-action">Comentar</a>
+                    <a href="#" class="post-action">Compartir</a>
+                </div>
             </div>
-        </aside>
+        </div>
     </main>
 
-    <script src="js/main.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/feed.js"></script>
 </body>
 </html> 

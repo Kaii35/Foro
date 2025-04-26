@@ -3,30 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ForoSocial - Comparte tus Reseñas y Reflexiones</title>
+    <title>Bonfire - Comparte tus Reseñas y Reflexiones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <style>
+        /* Aplicar la fuente a todo el texto */
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background: linear-gradient(135deg, #0a0a1a 0%, #0c1021 25%, #070b1a 50%, #1a0a2a 75%, #2a0a1a 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            margin: 0;
+            color: white;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Ajustar tamaños de fuente para mejor legibilidad */
+        p, a, button, .btn {
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+
+        /* Efecto de texto de fogata */
+        .fire-text {
+            background: linear-gradient(to right, #ffd700, #ff8c00, #ff4500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fire 2s infinite;
+            text-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+        }
+
+        @keyframes fire {
+            0% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(20deg); }
+            100% { filter: hue-rotate(0deg); }
+        }
+
         /* Estilos específicos para la landing page */
         .hero {
-            min-height: calc(100vh - var(--navbar-height));
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
         }
 
         .hero-content {
             max-width: 800px;
+            position: relative;
+            z-index: 1;
+            margin-top: -50mm;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 4rem;
             margin-bottom: 20px;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 0.9rem;
             margin-bottom: 30px;
             color: var(--secondary-text);
         }
@@ -36,13 +116,86 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             padding: 50px 20px;
+            margin-top: -40mm;
         }
 
         .feature-card {
             background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0;
+            border-radius: 15px;
             text-align: center;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .feature-icon {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .feature-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .feature-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: white;
+            text-align: center;
+        }
+
+        .feature-content p {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 80%;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+            filter: brightness(0.7);
+        }
+
+        .feature-card:hover .feature-content {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .cta-buttons {
@@ -52,14 +205,63 @@
             margin-top: 30px;
         }
 
+        .btn {
+            background-color: #6b7280;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #4b5563;
+            transform: translateY(-2px);
+        }
+
         .btn-secondary {
             background-color: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
+            border: 2px solid #6b7280;
+            color: #6b7280;
         }
 
         .btn-secondary:hover {
-            background-color: rgba(29, 161, 242, 0.1);
+            background-color: rgba(107, 114, 128, 0.1);
+            color: #4b5563;
+            border-color: #4b5563;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+        }
+
+        footer p {
+            font-size: 0.7rem;
+        }
+
+        .header {
+            background-color: #030712;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        main {
+            margin-top: 80px;
         }
     </style>
 </head>
@@ -67,18 +269,20 @@
     <header class="header">
         <nav class="nav container">
             <div class="logo">
-                <h1>ForoSocial</h1>
+                <h1 class="fire-text">Bonfire</h1>
             </div>
             <div class="nav-links">
                 <a href="feed.html" class="btn">Ir al Feed</a>
+                <a href="register.html" class="btn btn-secondary">Regístrate</a>
             </div>
         </nav>
     </header>
 
     <main>
         <section class="hero">
+            <div class="stars" id="stars"></div>
             <div class="hero-content">
-                <h1>Comparte tus Reseñas y Reflexiones</h1>
+                <h1 class="fire-text">Bonfire</h1>
                 <p>Únete a nuestra comunidad y comparte tus opiniones sobre libros, películas, videojuegos y más.</p>
                 <div class="cta-buttons">
                     <a href="feed.html" class="btn">Comenzar</a>
@@ -89,26 +293,68 @@
 
         <section id="features" class="features container">
             <div class="feature-card">
-                <h3>📚 Reseñas de Libros</h3>
-                <p>Comparte tus opiniones sobre tus lecturas favoritas</p>
+                <img src="imgAssets/cards/books2.assests.jpg" alt="Libros" class="feature-icon">
+                <div class="feature-content">
+                    <h3>Reseñas de Libros</h3>
+                    <p>Comparte tus opiniones sobre tus lecturas favoritas y descubre nuevas recomendaciones de la comunidad.</p>
+                </div>
             </div>
             <div class="feature-card">
-                <h3>🎬 Reseñas de Películas</h3>
-                <p>Analiza y discute sobre las últimas películas</p>
+                <img src="imgAssets/cards/movieAssest.png" alt="Películas" class="feature-icon">
+                <div class="feature-content">
+                    <h3>Reseñas de Películas</h3>
+                    <p>Analiza y discute sobre las últimas películas, series y documentales con otros cinéfilos.</p>
+                </div>
             </div>
             <div class="feature-card">
-                <h3>🎮 Reseñas de Videojuegos</h3>
-                <p>Comparte tus experiencias gaming</p>
+                <img src="imgAssets/cards/consoleAssets.jpg" alt="Videojuegos" class="feature-icon">
+                <div class="feature-content">
+                    <h3>Reseñas de Videojuegos</h3>
+                    <p>Comparte tus experiencias gaming, descubre nuevos títulos y conecta con otros jugadores.</p>
+                </div>
             </div>
             <div class="feature-card">
-                <h3>💭 Reflexiones</h3>
-                <p>Expresa tus pensamientos y reflexiones</p>
+                <img src="imgAssets/cards/thinkAssets.png" alt="Reflexiones" class="feature-icon">
+                <div class="feature-content">
+                    <h3>Reflexiones</h3>
+                    <p>Expresa tus pensamientos, ideas y reflexiones personales en un espacio seguro y acogedor.</p>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="container" style="text-align: center; padding: 20px; color: var(--secondary-text);">
-        <p>&copy; 2024 ForoSocial. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Bonfire. Todos los derechos reservados.</p>
     </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // Generar estrellas
+        document.addEventListener('DOMContentLoaded', function() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 100;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Tamaño aleatorio entre 1 y 3 píxeles
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Posición aleatoria
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                // Duración de la animación aleatoria
+                star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
+                
+                starsContainer.appendChild(star);
+            }
+        });
+    </script>
 </body>
 </html> 

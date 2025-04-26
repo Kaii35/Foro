@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Perfil - ForoSocial</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .profile-setup {
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 20px;
+        }
+
+        .profile-form {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: transparent;
+            color: var(--text-color);
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #1991db;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .profile-header p {
+            color: var(--secondary-text);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">
+                <h1>ForoSocial</h1>
+            </div>
+        </nav>
+    </header>
+
+    <main class="profile-setup">
+        <div class="profile-header">
+            <h1>Configura tu Perfil</h1>
+            <p>Completa tu información para comenzar a usar ForoSocial</p>
+        </div>
+
+        <form id="profileForm" class="profile-form">
+            <div class="form-group">
+                <label for="username">Nombre de usuario</label>
+                <input type="text" id="username" name="username" required 
+                       placeholder="Elige un nombre de usuario único">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Descripción para el perfil</label>
+                <textarea id="description" name="description" required
+                          placeholder="Cuéntanos sobre ti..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Guardar Perfil</button>
+        </form>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="js/profile-setup.js"></script>
+</body>
+</html> 
