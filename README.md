@@ -1,4 +1,5 @@
-# Foro Social de Reseñas
+# Bonfire
+**Versión:** v0.3.0 alpha
 
 Este es un foro social inspirado en X (Twitter) donde los usuarios pueden compartir:
 - Reseñas de libros

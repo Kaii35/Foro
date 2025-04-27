@@ -111,13 +111,23 @@
             color: var(--secondary-text);
         }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            padding: 50px 20px;
-            margin-top: -40mm;
-        }
+        /* Features section */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 50px 20px;
+    margin-top: -40mm; 
+}
+
+.section-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    color: white;
+    width: 100%;
+    grid-column: 1 / -1;
+}
 
         .feature-card {
             background: rgba(255, 255, 255, 0.05);
@@ -220,9 +230,9 @@
         }
 
         .btn-secondary {
-            background-color: transparent;
+            background-color: #6b7280;
             border: 2px solid #6b7280;
-            color: #6b7280;
+            
         }
 
         .btn-secondary:hover {
@@ -286,12 +296,13 @@
                 <p>Únete a nuestra comunidad y comparte tus opiniones sobre libros, películas, videojuegos y más.</p>
                 <div class="cta-buttons">
                     <a href="feed.html" class="btn">Comenzar</a>
-                    <a href="#features" class="btn btn-secondary">Saber más</a>
+                    <a href="#features" class="btn btn-secondary" onclick="scrollToFeatures(event)">Saber más</a>
                 </div>
             </div>
         </section>
 
         <section id="features" class="features container">
+            <h2 class="section-title">¡Explora y comparte de manera anónima!</h2>
             <div class="feature-card">
                 <img src="imgAssets/cards/books2.assests.jpg" alt="Libros" class="feature-icon">
                 <div class="feature-content">
@@ -355,6 +366,36 @@
                 starsContainer.appendChild(star);
             }
         });
+
+        // Función para desplazamiento suave a la sección de características
+        function scrollToFeatures(event) {
+            event.preventDefault();
+            const featuresSection = document.getElementById('features');
+            
+            // Implementación personalizada de desplazamiento suave
+            const startPosition = window.pageYOffset;
+            const targetPosition = featuresSection.getBoundingClientRect().top + startPosition;
+            const distance = targetPosition - startPosition;
+            const duration = 1000; // Duración en milisegundos (1 segundo)
+            let start = null;
+            
+            function animation(currentTime) {
+                if (start === null) start = currentTime;
+                const timeElapsed = currentTime - start;
+                const progress = Math.min(timeElapsed / duration, 1);
+                
+                // Función de easing para un movimiento más natural
+                const easeInOutQuad = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+                
+                window.scrollTo(0, startPosition + distance * easeInOutQuad(progress));
+                
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                }
+            }
+            
+            requestAnimationFrame(animation);
+        }
     </script>
 </body>
 </html> 
