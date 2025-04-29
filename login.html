@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regístrate - Bonfire</title>
+    <title>Iniciar Sesión - Bonfire</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -27,7 +27,29 @@
             animation: gradientBG 15s ease infinite;
         }
 
-        .register-container {
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Efecto de texto de fogata */
+        .fire-text {
+            background: linear-gradient(to right, #ffd700, #ff8c00, #ff4500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fire 2s infinite;
+            text-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+        }
+
+        @keyframes fire {
+            0% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(20deg); }
+            100% { filter: hue-rotate(0deg); }
+        }
+
+        .login-container {
             position: fixed;
             top: 0;
             left: 0;
@@ -39,7 +61,7 @@
             overflow: hidden;
         }
 
-        .register-content {
+        .login-content {
             position: relative;
             width: 100%;
             max-width: 400px;
@@ -52,82 +74,28 @@
             text-align: center;
         }
 
-        .register-header {
+        .login-header {
             position: relative;
             width: 100%;
             margin: 0;
             padding: 10px 0;
         }
 
-        .register-header h1 {
+        .login-header h1 {
             font-size: 1.5rem;
             margin-bottom: 15px;
             text-align: center;
             width: 100%;
         }
 
-        .register-header p {
+        .login-header p {
             font-size: 0.7rem;
             color: var(--secondary-text);
             text-align: center;
             width: 100%;
         }
 
-        .google-btn {
-            position: relative;
-            width: 100%;
-            max-width: 300px;
-            margin: 10px 0;
-            padding: 0;
-            background-color: #fff;
-            color: #757575;
-            border: 1px solid #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px 24px;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            font-size: 0.7rem;
-            text-align: center;
-        }
-
-        .google-btn:hover {
-            background-color: #f5f5f5;
-        }
-
-        .google-btn img {
-            width: 20px;
-            height: 20px;
-        }
-
-        .login-link {
-            position: relative;
-            width: 100%;
-            margin: 10px 0;
-            padding: 0;
-            color: var(--secondary-text);
-            font-size: 0.7rem;
-            text-align: center;
-        }
-
-        .login-link a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .login-link a:hover {
-            text-decoration: underline;
-        }
-
-        .logo h1 {
-            font-size: 1rem;
-        }
-
-        .register-form {
+        .login-form {
             position: relative;
             width: 100%;
             max-width: 300px;
@@ -159,7 +127,6 @@
             color: white;
             font-family: 'Press Start 2P', cursive;
             font-size: 0.7rem;
-            text-align: center;
         }
 
         .form-group input:focus {
@@ -167,7 +134,7 @@
             border-color: rgba(255, 255, 255, 0.3);
         }
 
-        .register-btn {
+        .login-btn {
             width: 100%;
             padding: 12px;
             background: linear-gradient(to right, #ffd700, #ff8c00, #ff4500);
@@ -178,11 +145,39 @@
             font-size: 0.7rem;
             cursor: pointer;
             transition: transform 0.2s;
-            text-align: center;
         }
 
-        .register-btn:hover {
+        .login-btn:hover {
             transform: translateY(-2px);
+        }
+
+        .google-btn {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            margin: 10px 0;
+            padding: 0;
+            background-color: #fff;
+            color: #757575;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .google-btn:hover {
+            background-color: #f5f5f5;
+        }
+
+        .google-btn img {
+            width: 20px;
+            height: 20px;
         }
 
         .divider {
@@ -190,7 +185,11 @@
             width: 100%;
             margin: 10px 0;
             padding: 0;
+            display: flex;
+            align-items: center;
             text-align: center;
+            color: var(--secondary-text);
+            font-size: 0.7rem;
         }
 
         .divider::before,
@@ -202,6 +201,25 @@
 
         .divider span {
             padding: 0 10px;
+        }
+
+        .register-link {
+            position: relative;
+            width: 100%;
+            margin: 10px 0;
+            padding: 0;
+            text-align: center;
+            color: var(--secondary-text);
+            font-size: 0.7rem;
+        }
+
+        .register-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
         }
 
         .header {
@@ -220,24 +238,16 @@
             align-items: center;
         }
 
+        .logo {
+            text-align: center;
+        }
+
+        .logo h1 {
+            font-size: 1rem;
+        }
+
         main {
             margin-top: 60px;
-        }
-
-        /* Efecto de texto de fogata */
-        .fire-text {
-            background: linear-gradient(to right, #ffd700, #ff8c00, #ff4500);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: fire 2s infinite;
-            text-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
-        }
-
-        @keyframes fire {
-            0% { filter: hue-rotate(0deg); }
-            50% { filter: hue-rotate(20deg); }
-            100% { filter: hue-rotate(0deg); }
         }
 
         .form-group:last-of-type {
@@ -256,14 +266,14 @@
         </nav>
     </header>
 
-    <main class="register-container">
-        <div class="register-content">
-            <div class="register-header">
+    <main class="login-container">
+        <div class="login-content">
+            <div class="login-header">
                 <h1 class="fire-text">Bonfire</h1>
-                <p>Únete a nuestra comunidad y comparte tus opiniones con el mundo</p>
+                <p>Bienvenido de nuevo a nuestra comunidad</p>
             </div>
 
-            <form class="register-form" id="registerForm">
+            <form class="login-form" id="loginForm">
                 <div class="form-group">
                     <label for="email">Correo electrónico</label>
                     <input type="email" id="email" name="email" required>
@@ -272,32 +282,27 @@
                     <label for="password">Contraseña</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                <div class="form-group">
-                    <label for="confirmPassword">Confirmar contraseña</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" required>
-                </div>
-                <button type="submit" class="register-btn">Registrarse</button>
+                <button type="submit" class="login-btn">Iniciar Sesión</button>
             </form>
 
             <div class="divider">
                 <span>o</span>
             </div>
 
-            <button class="google-btn" id="googleSignInButton" type="button">
+            <button class="google-btn" id="googleSignInButton">
                 <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
-                Registrarse con Google
+                Iniciar sesión con Google
             </button>
 
-            <p class="login-link">
-                ¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a>
+            <p class="register-link">
+                ¿No tienes una cuenta? <a href="register.html">Regístrate</a>
             </p>
         </div>
     </main>
 
-    <!-- Firebase App (the core Firebase SDK) -->
     <script type="module" src="js/auth.js"></script>
     <script type="module">
-        import { registerWithEmail, signInWithGoogle } from './js/auth.js';
+        import { signInWithEmailAndPassword, signInWithGoogle } from './js/auth.js';
         console.log('Auth module imported');
         
         // Asignar la función signInWithGoogle al botón de Google
@@ -313,52 +318,41 @@
             console.error('Google button not found');
         }
         
-        const registerForm = document.getElementById('registerForm');
-        if (registerForm) {
-            registerForm.addEventListener('submit', async function(e) {
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 console.log('Form submitted');
                 
                 const email = document.getElementById('email').value;
                 const password = document.getElementById('password').value;
-                const confirmPassword = document.getElementById('confirmPassword').value;
-
-                if (password !== confirmPassword) {
-                    alert('Las contraseñas no coinciden');
-                    return;
-                }
-
-                if (password.length < 6) {
-                    alert('La contraseña debe tener al menos 6 caracteres');
-                    return;
-                }
 
                 try {
-                    const submitButton = document.querySelector('.register-btn');
+                    const submitButton = document.querySelector('.login-btn');
                     submitButton.disabled = true;
-                    submitButton.textContent = 'Registrando...';
+                    submitButton.textContent = 'Iniciando sesión...';
 
-                    console.log('Attempting to register user with email:', email);
-                    const userCredential = await registerWithEmail(email, password);
-                    console.log('User registered successfully:', userCredential);
+                    console.log('Attempting to sign in with email:', email);
+                    const userCredential = await signInWithEmailAndPassword(email, password);
+                    console.log('User signed in successfully:', userCredential);
                     
-                    window.location.href = 'profile-setup.html';
+                    window.location.href = 'feed.html';
                 } catch (error) {
-                    console.error('Registration error:', error);
-                    let errorMessage = 'Error al registrar usuario: ';
+                    console.error('Sign in error:', error);
+                    let errorMessage = 'Error al iniciar sesión: ';
                     
                     switch (error.code) {
-                        case 'auth/email-already-in-use':
-                            errorMessage += 'Este correo electrónico ya está registrado';
+                        case 'auth/user-not-found':
+                            errorMessage += 'No existe una cuenta con este correo electrónico';
+                            break;
+                        case 'auth/wrong-password':
+                            errorMessage += 'Contraseña incorrecta';
                             break;
                         case 'auth/invalid-email':
                             errorMessage += 'El correo electrónico no es válido';
                             break;
-                        case 'auth/operation-not-allowed':
-                            errorMessage += 'El registro con email/contraseña no está habilitado';
-                            break;
-                        case 'auth/weak-password':
-                            errorMessage += 'La contraseña es demasiado débil';
+                        case 'auth/user-disabled':
+                            errorMessage += 'Esta cuenta ha sido deshabilitada';
                             break;
                         default:
                             errorMessage += error.message;
@@ -366,13 +360,13 @@
                     
                     alert(errorMessage);
                     
-                    const submitButton = document.querySelector('.register-btn');
+                    const submitButton = document.querySelector('.login-btn');
                     submitButton.disabled = false;
-                    submitButton.textContent = 'Registrarse';
+                    submitButton.textContent = 'Iniciar Sesión';
                 }
             });
         } else {
-            console.error('Register form not found');
+            console.error('Login form not found');
         }
     </script>
 </body>
